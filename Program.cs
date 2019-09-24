@@ -7,8 +7,11 @@ namespace battleship
 
         static void launchGame()
         {
-            Console.Clear();
-            gameboardPainter.printContent();
+            
+            battleshipSettings.Move(2);
+            battleshipSettings.Move(3);
+            battleshipSettings.Move(2);
+
 
 
         }
