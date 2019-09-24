@@ -4,6 +4,14 @@ namespace battleship
 {
     class Program
     {   
+
+        static void launchGame()
+        {
+            Console.Clear();
+            gameboardPainter.printContent();
+
+
+        }
         static void startNewGame()
         {
             string menuHeader = "Start new game";
@@ -16,12 +24,15 @@ namespace battleship
             {
                 case 0:
                 // Launch game
+                    launchGame();
+                    
 
                 break;
 
                 case 1:
                 // Settings
                     throw new Exception("Not yet implemented");
+                break;
 
                 case 2:
                 // Go back
@@ -48,7 +59,7 @@ namespace battleship
             {
                 case 0:
                     // Nytt spel
-
+                    startNewGame();
                 break;
 
                 case 1:
