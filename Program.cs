@@ -7,11 +7,37 @@ namespace battleship
 
         static void launchGame()
         {
-            
-            battleshipSettings.Move(2);
-            battleshipSettings.Move(3);
-            battleshipSettings.Move(2);
+            string menuHeader = "Select player:";
+            string[] menuContent = {"Player 1", "Player 2", "Go back"};
 
+            var menu = new Menu(menuContent);
+            
+            bool done = false;
+
+            do{
+                menu = menu.GetMenu(menu, menuHeader);
+                switch(menu.SelectedIndex)
+                {
+                    case 0:
+                        battleShipMechanics.addShip(1);
+                        Console.WriteLine("Nu är player 1 klar");
+                        Console.ReadKey();
+                    break;
+
+                    case 1:
+                        battleShipMechanics.addShip(2);
+
+                    break;
+
+                    case 2:
+                        startNewGame();
+                    break;
+
+                }
+
+            }while(!done);
+       
+                    Console.WriteLine("Tjennare tjenare ");
 
 
         }
@@ -78,7 +104,7 @@ namespace battleship
                 case 3:
                     // Avsluta
                     Console.ResetColor();
-                    return;
+                break;
 
                 default:
                     // Fel hanterig

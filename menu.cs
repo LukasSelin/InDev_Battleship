@@ -10,7 +10,7 @@ public class Menu
         Items = items.ToArray();                // Gör om till en array
     }
     public IReadOnlyList<string> Items { get; }
-    public int SelectedIndex { get; private set; } = -1; // Utgångspunkt med inget markerat
+    public int SelectedIndex { get; private set; } = 0; // Utgångspunkt med inget markerat
     public string SelectedOption => SelectedIndex != -1 ? Items[SelectedIndex] : null;
 
     // Rör dig ett steg uppåt om du inte är på högsta nivån
