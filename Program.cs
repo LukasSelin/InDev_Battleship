@@ -1,10 +1,10 @@
 ﻿using System;
+using battleship;
 
-namespace battleship
+namespace program
 {
     class Program
     {   
-
         static void launchGame()
         {
             string menuHeader = "Select player:";
@@ -26,7 +26,8 @@ namespace battleship
 
                     case 1:
                         battleShipMechanics.addShip(2);
-
+                        Console.WriteLine("Nu är player 2 klar");
+                        Console.ReadKey();
                     break;
 
                     case 2:
@@ -61,7 +62,6 @@ namespace battleship
                 case 1:
                 // Settings
                     throw new Exception("Not yet implemented");
-                break;
 
                 case 2:
                 // Go back
