@@ -33,7 +33,6 @@ namespace program
                     case 2:
                         startNewGame();
                     break;
-
                 }
 
             }while(!done);
