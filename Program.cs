@@ -7,39 +7,20 @@ namespace program
     {   
         static void launchGame()
         {
-            string menuHeader = "Select player:";
-            string[] menuContent = {"Player 1", "Player 2", "Go back"};
+            battleShipMechanics.addShip(1);
+            Console.WriteLine("Nu är player 1 klar");
+            Console.ReadKey();
+            battleShipMechanics.addShip(2);
+            Console.WriteLine("Nu är player 2 klar");
+            Console.ReadKey();
 
-            var menu = new Menu(menuContent);
-            
-            bool done = false;
-
-            do{
-                menu = menu.GetMenu(menu, menuHeader);
-                switch(menu.SelectedIndex)
-                {
-                    case 0:
-                        battleShipMechanics.addShip(1);
-                        Console.WriteLine("Nu är player 1 klar");
-                        Console.ReadKey();
-                    break;
-
-                    case 1:
-                        battleShipMechanics.addShip(2);
-                        Console.WriteLine("Nu är player 2 klar");
-                        Console.ReadKey();
-                    break;
-
-                    case 2:
-                        startNewGame();
-                    break;
-                }
-
-            }while(!done);
-       
-                    Console.WriteLine("Tjennare tjenare ");
-
-
+            /*
+                Shoot
+                    Mata in kordinater
+                    Träff ja/nej
+                    Skjutmarkör
+                    Uppdatera gameboard
+            */
         }
         static void startNewGame()
         {
@@ -54,8 +35,6 @@ namespace program
                 case 0:
                 // Launch game
                     launchGame();
-                    
-
                 break;
 
                 case 1:
@@ -71,7 +50,6 @@ namespace program
                 // Wrong
 
                 break;
-
             }
         }
         static void launchGameMenu()

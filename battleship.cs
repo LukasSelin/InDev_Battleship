@@ -6,13 +6,14 @@ namespace battleship
     class battleshipSettings
     {
         /*
-            Lenght:
+            Ship length:
+            ------------
             Carrier = 5  
             Battleship = 4
             Cruiser = 3
             Submarine = 3
-            Destroyer = 2       
-        
+            Destroyer = 2
+            ------------       
          */
         // Standard game settings
         public static int gameboardLength { get; set; } = 11;
@@ -27,12 +28,13 @@ namespace battleship
         public static int[,] gameboardCoordinats { get; set; } = new int[gameboardLength, gameboardHeight];
         public static int[,] playerOneShipCoordinats { get; set; } = new int[gameboardLength, gameboardHeight];
         public static int[,] playerTwoShipCoordinats { get; set; } = new int[gameboardLength, gameboardHeight];
-
-
     }
-
     class battleShipMechanics
     {
+        public static void MoveUp() => battleshipSettings.startY = Math.Max(battleshipSettings.startY - 1, 0);
+        public static void MoveDown() => battleshipSettings.startY = Math.Min(battleshipSettings.startY + 1, battleshipSettings.gameboardHeight - 1);
+        public static void MoveLeft() => battleshipSettings.startX = Math.Max(battleshipSettings.startX - 1, 0);
+        public static void MoveRight() => battleshipSettings.startX = Math.Min(battleshipSettings.startX + 1, battleshipSettings.gameboardLength - 1);
         public static void addShip(int playerID)
         {
             // Destroyer = 2
@@ -74,20 +76,7 @@ namespace battleship
                     {
                         case ConsoleKey.UpArrow:
                             Array.Clear(battleshipSettings.gameboardCoordinats, 0, battleshipSettings.gameboardCoordinats.Length);
-
-                            if (isInside())
-                            {
-                                battleshipSettings.startY = battleshipSettings.startY - 1;
-                            }
-                            else
-                            {
-                                battleshipSettings.gameboardCoordinats[battleshipSettings.startX, battleshipSettings.startY] = 1;
-                            }
-
-                            if (battleshipSettings.startY == -1){
-                                battleshipSettings.startY = 0;
-                            }
-
+                            MoveUp();
                             for (int i = 0; i < lenght; i++)
                             {
                                 if (battleshipSettings.startY - i > 0 && battleshipSettings.startY < battleshipSettings.gameboardHeight ){
@@ -104,18 +93,8 @@ namespace battleship
                         case ConsoleKey.DownArrow:
                             Array.Clear(battleshipSettings.gameboardCoordinats, 0, battleshipSettings.gameboardCoordinats.Length);
 
-                            if (isInside())
-                            {
-                                battleshipSettings.startY = battleshipSettings.startY + 1;
-                            }
-                            else  
-                            {
-                                battleshipSettings.gameboardCoordinats[battleshipSettings.startX, battleshipSettings.startY] = 1;
-                            }
-                            if (battleshipSettings.startY == battleshipSettings.gameboardHeight){
-                                battleshipSettings.startY = battleshipSettings.gameboardHeight -1;
-                            }
-                
+                            MoveDown();
+
                             for (int i = 0; i < lenght; i++)
                             {
                                 if (battleshipSettings.startY - i > -1 && battleshipSettings.startY < battleshipSettings.gameboardHeight ){
@@ -131,14 +110,7 @@ namespace battleship
                         case ConsoleKey.RightArrow:
                             Array.Clear(battleshipSettings.gameboardCoordinats, 0, battleshipSettings.gameboardCoordinats.Length);
 
-                            if (isInside())
-                            {
-                                battleshipSettings.startX = battleshipSettings.startX + 1;
-                            }
-                            else
-                            {
-                                battleshipSettings.gameboardCoordinats[battleshipSettings.startX, battleshipSettings.startY] = 1;
-                            }
+                            MoveRight();
 
                             for (int i = 0; i < lenght; i++)
                             {
@@ -149,15 +121,7 @@ namespace battleship
                         case ConsoleKey.LeftArrow:
                             Array.Clear(battleshipSettings.gameboardCoordinats, 0, battleshipSettings.gameboardCoordinats.Length);
 
-                            if (isInside())
-                            {
-                                battleshipSettings.startX = battleshipSettings.startX - 1;
-                            }
-                            else
-                            {
-                                battleshipSettings.gameboardCoordinats[battleshipSettings.startX, battleshipSettings.startY] = 1;
-                            }
-
+                            MoveLeft();
 
                             for (int i = 0; i < lenght; i++)
                             {
@@ -191,7 +155,7 @@ namespace battleship
         } while (!done);
         }
 
-    static bool isInside()
+        static bool isInside()
     {
         const int minusOne = -1;
 
@@ -204,6 +168,17 @@ namespace battleship
             return false;
         }
     }
+
+
+        static void Shoot()
+        {
+            var keyInfo = Console.ReadKey();
+
+
+
+
+        }
+
     
 
 }
